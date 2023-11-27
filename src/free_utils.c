@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 09:46:06 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/24 17:09:06 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/27 10:18:50 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	ft_free_splited(char **splited)
 void	ft_free_map(t_data *data)
 {
 	int	y;
-	
+
 	y = 0;
 	while (y < data->height)
 	{

@@ -4,7 +4,8 @@ SRC = ./src/fdf.c\
 	./src/algebra.c\
 	./src/display.c\
 	./src/display_utils.c\
-	./src/handlers.c\
+	./src/handlers1.c\
+	./src/handlers2.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -23,7 +24,7 @@ NAME = fdf
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
-	$(CC) $(CFLAGS) $(OBJ) -lX11 -lXext -lm -lz -o $(NAME) $(LIBFT) $(MINILIBX)
+	$(CC) $(CFLAGS) $(OBJ) -lX11 -lXext -lm -lz -O3 -o $(NAME) $(LIBFT) $(MINILIBX)
 
 $(LIBFT):
 	make -C ./include/Libft -s
