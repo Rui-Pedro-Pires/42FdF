@@ -6,12 +6,15 @@ SRC = ./src/fdf.c\
 	./src/display_utils.c\
 	./src/handlers1.c\
 	./src/handlers2.c\
+	./src/maps_res.c\
 
 OBJ = $(SRC:.c=.o)
 
 CC = cc
 
 RM = rm -rf
+
+INCLUDE = fdf.h
 
 CFLAGS = -Wall -Werror -Wextra -g
 
@@ -23,7 +26,7 @@ NAME = fdf
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
+$(NAME): $(OBJ) $(LIBFT) $(MINILIBX) $(INCLUDE)
 	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBX) -lX11 -lXext -lm -lz -O3 -o $(NAME)
 
 $(LIBFT):

@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:10:56 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/27 15:43:14 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:02:08 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,44 +29,15 @@ int	render_map(t_data *data)
 	data->img.mlx_img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
 	data->img.addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp, \
 	&data->img.line_len, &data->img.endian);
-	data->y = 0;
-	while (data->y < (data->height))
-	{
-		data->x = 0;
-		while (data->x < (data->width))
-		{
-			if (data->x < data->width - 1)
-				bresenhaim(data, data->x + 1, data->y);
-			if (data->y < data->height - 1)
-				bresenhaim(data, data->x, data->y + 1);
-			data->x++;
-		}
-		data->y++;
-	}
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,\
-	 data->img.mlx_img, 0, 0);
-	return (0);
-}
-
-int	render_map_2d(t_data *data)
-{
-	data->img.mlx_img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
-	data->img.addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp, \
-	&data->img.line_len, &data->img.endian);
-	data->y = 0;
-	while (data->y < data->height)
-	{
-		data->x = 0;
-		while (data->x < data->width)
-		{
-			if (data->x < data->width - 1)
-				bresenhaim_2d(data, data->x + 1, data->y);
-			if (data->y < data->height - 1)
-				bresenhaim_2d(data, data->x, data->y + 1);
-			data->x++;
-		}
-		data->y++;
-	}
+	data->y = data->height / 2 * -1;
+	if (data->height % 2 != 0 && data->prespective == 1)
+		map_impar(data);
+	else if (data->height % 2 == 0 && data->prespective == 1)
+		map_par(data);
+	else if (data->height % 2 != 0 && data->prespective == 2)
+		map_impar_2d(data);
+	else if (data->height % 2 == 0 && data->prespective == 2)
+		map_par_2d(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,\
 	 data->img.mlx_img, 0, 0);
 	return (0);
@@ -75,13 +46,9 @@ int	render_map_2d(t_data *data)
 int	init_window(t_data *data)
 {
 	data->zoom = 20;
-	// while ((data->width * data->zoom) > (WIDTH / 1.5) && (data->height * data->zoom ) > (HEIGHT))
-	// {
-	// 	data->zoom /= 2;
-	// }
 	data->prespective = 1;
 	data->hor = WIDTH / 2;
-	data->hey = HEIGHT / 2 - data->height * 4;
+	data->hey = HEIGHT / 2;
 	data->angle_x = 0.8;
 	data->angle_y = 0.8;
 	data->mlx_ptr = mlx_init();

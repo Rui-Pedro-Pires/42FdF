@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/20 16:20:08 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/27 11:07:27 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:15:30 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		creat_map(argv[1], &data);
+		// printf("%d\n", data.height);
+		// printf("%d", data.width);
 		open_window(&data);
 	}
 	exit (0);

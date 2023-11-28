@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:21:04 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/27 18:36:52 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:25:05 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,34 +41,44 @@ int	build_img(t_data *data)
 	return (0);
 }
 
+// void	colors_change(t_data *data)
+// {
+// 	int	red;
+// 	int	green;
+// 	// int	blue;
+
+// 	green = 255;
+// 	red = 0;
+// 	if (data->z > 0 || data->z1 > 0)
+// 	{
+// 		if (red < 255)
+// 		{
+// 			red = (0x000000 + 255/150*data->z);
+// 			red <<= 16;
+// 		}
+// 	}
+// 	if (data->z > 0 || data->z1 > 0)
+// 	{
+// 		green += (0x000000 - 255/80*data->z + 0);
+// 		if (green > 0)
+// 		{
+// 			green <<= 8;
+// 		}
+// 		data->color = red + green;
+// 	}
+// 	// blue = 0;
+// // 	if (data->z > 10 || data->z1 > 10)
+// // 		data->color = 0x54ae3f;
+// // 	if (data->z > 15 || data->z1 > 15)
+// // 		data->color = 0x810202;
+// }
+
 void	colors_change(t_data *data)
 {
-	int	red;
-	int	green;
-	// int	blue;
-
-	green = 255;
-	red = 0;
-	if (data->z > 0 || data->z1 > 0)
-	{
-		if (red < 255)
-		{
-			red = (0x000000 + 255/150*data->z);
-			red <<= 16;
-		}
-	}
-	if (data->z > 0 || data->z1 > 0)
-	{
-		green += (0x000000 - 255/80*data->z + 0);
-		if (green > 0)
-		{
-			green <<= 8;
-		}
-		data->color = red + green;
-	}
-	// blue = 0;
-// 	if (data->z > 10 || data->z1 > 10)
-// 		data->color = 0x54ae3f;
-// 	if (data->z > 15 || data->z1 > 15)
-// 		data->color = 0x810202;
+	if (data->z >= 0 || data->z1 >= 0)
+		data->color = 0x00D5FF;
+	if (data->z >= 10 || data->z1 >= 10)
+		data->color = 0x40FF00;
+	if (data->z >= 40 || data->z1 >= 40)
+		data->color = 0xFF0000;
 }

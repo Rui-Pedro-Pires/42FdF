@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:12:18 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/27 15:28:05 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:42:36 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	bresenhaim(t_data *data, float x1, float y1)
 {
 	data->u = data->x;
 	data->v = data->y;
-	data->z = data->map[(int)data->v][(int)data->u];
-	data->z1 = data->map[(int)y1][(int)x1];
+	data->z = data->map[data->y + (data->height / 2)][data->x + (data->width / 2)];
+	data->z1 = data->map[(int)y1 + (data->height / 2)][(int)x1 + (data->width / 2)];
 	isometric(&data->u, &data->v, &data->z, data);
 	isometric(&x1, &y1, &data->z1, data);
 	zoom(&data->u, &data->v, data);
@@ -41,8 +41,8 @@ void	bresenhaim_2d(t_data *data, float x1, float y1)
 {
 	data->u = data->x;
 	data->v = data->y;
-	data->z = data->map[(int)data->v][(int)data->u];
-	data->z1 = data->map[(int)y1][(int)x1];
+	data->z = data->map[data->y + (data->height / 2)][data->x + (data->width / 2)];
+	data->z1 = data->map[(int)y1 + (data->height / 2)][(int)x1 + (data->width / 2)];
 	zoom(&data->u, &data->v, data);
 	zoom(&x1, &y1, data);
 	map_move(&data->u, &data->v, data);

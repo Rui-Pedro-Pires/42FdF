@@ -32,13 +32,13 @@ typedef struct	s_data
 	int	max;
 	int	color;
 	int	prespective;
-	float	hor;
-	float	hey;
+	int	hor;
+	int	hey;
 	float	angle_x;
 	float	angle_y;
 	float	zoom;
-	float	x;
-	float	y;
+	int	x;
+	int	y;
 	float	u;
 	float	v;
 	float	z;
@@ -67,7 +67,6 @@ void	ft_free_map(t_data *data);
 
 int	init_window(t_data *data);
 int	render_map(t_data *data);
-int	render_map_2d(t_data *data);
 void	open_window(t_data *data);
 float	positive(float n);
 float	max_step(float x_step, float y_step);
@@ -93,5 +92,10 @@ int	z_handle(int keysym, t_data *data);
 int	decrease_z(t_data *data);
 int	increase_z(t_data *data);
 int	default_img(t_data *data);
+void	map_par(t_data *data);
+void	map_impar(t_data *data);
+void	map_par_2d(t_data *data);
+void	map_impar_2d(t_data *data);
+
 
 #endif

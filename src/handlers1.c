@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:15:55 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/27 16:04:38 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:01:01 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,9 @@ int	handle_keypress(int keysym, t_data *data)
 	else if (keysym == XK_x || keysym == XK_y 
 	|| keysym == XK_F1 || keysym == XK_F2 || keysym == XK_F3)
 		angle_handle(keysym, data);
-	else if (keysym == XK_z || keysym == XK_x)
+	else if (keysym == XK_KP_Add || keysym == XK_KP_Subtract)
 		z_handle(keysym, data);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
-	if (data->prespective == 2)
-	{
-		render_map_2d(data);
-		return (0);
-	}
 	render_map(data);
 	return (0);
 }
@@ -58,15 +53,11 @@ int	move_handle(int keysym, t_data *data)
 		data->hey += 5;
 	else if (keysym == XK_r)
 	{
-		data->hor = WIDTH / 2;
-		data->hey = HEIGHT / 2 - data->height * 4;
 		data->zoom = 20;
-		// while ((data->width * data->zoom) > (WIDTH / 1.5) && (data->height * data->zoom ) > (HEIGHT))
-		// {
-		// 	data->zoom /= 2;
-		// }
-		data->angle_x = 0.024567;
-		data->angle_y = 0.024567;
+		data->hor = WIDTH / 2;
+		data->hey = HEIGHT / 2;
+		data->angle_x = 0.8;
+		data->angle_y = 0.8;
 	}
 	return (0);
 }
@@ -80,8 +71,8 @@ int	angle_handle(int keysym, t_data *data)
 	else if (keysym == XK_F1)
 	{
 		data->prespective = 1;
-		data->angle_x = 0;
-		data->angle_y = 0;
+		data->angle_x =  0.8;
+		data->angle_y = 0.8;
 	}
 	else if (keysym == XK_F2)
 	{
@@ -96,9 +87,9 @@ int	angle_handle(int keysym, t_data *data)
 
 int	z_handle(int keysym, t_data *data)
 {
-	if (keysym == XK_x)
+	if (keysym == XK_KP_Add)
 		increase_z(data);
-	else if (keysym == XK_z)
+	else if (keysym == XK_KP_Subtract)
 		decrease_z(data);
 	return (0);
 }

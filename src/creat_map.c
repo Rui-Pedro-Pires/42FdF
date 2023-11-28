@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:50:13 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/27 11:07:44 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/28 15:46:00 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 void	size_height(char *file, t_data *data)
 {
 	int		fd;
+	// int		x;
 	char	*line;
+	// char	**line1;
 
+	// x = 0;
 	data->height = 0;
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -25,6 +28,10 @@ void	size_height(char *file, t_data *data)
 		exit (0);
 	}
 	line = get_next_line(fd);
+	// line1 = ft_split(line, ' ');
+	// while (line1[x++])
+	// 	data->width++;
+	// ft_free_splited(line1);
 	while (line)
 	{
 		data->height++;
