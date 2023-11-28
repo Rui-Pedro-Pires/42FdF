@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:21:04 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/28 16:25:05 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/28 16:36:54 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,11 @@ int	build_img(t_data *data)
 void	colors_change(t_data *data)
 {
 	if (data->z >= 0 || data->z1 >= 0)
-		data->color = 0x00D5FF;
+		data->color = 0x00FFFF;
 	if (data->z >= 10 || data->z1 >= 10)
-		data->color = 0x40FF00;
-	if (data->z >= 40 || data->z1 >= 40)
+		data->color = 0xFFFF00;
+	if (data->z >= 90 || data->z1 >= 90)
 		data->color = 0xFF0000;
+	if (data->z >= 120 || data->z1 >= 120)
+		data->color = 0xFFFFFF;
 }
