@@ -34,7 +34,8 @@ typedef struct	s_data
 	int	prespective;
 	float	hor;
 	float	hey;
-	float	angle;
+	float	angle_x;
+	float	angle_y;
 	float	zoom;
 	float	x;
 	float	y;

@@ -24,7 +24,7 @@ NAME = fdf
 all: $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
-	$(CC) $(CFLAGS) $(OBJ) -lX11 -lXext -lm -lz -O3 -o $(NAME) $(LIBFT) $(MINILIBX)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) $(MINILIBX) -lX11 -lXext -lm -lz -O3 -o $(NAME)
 
 $(LIBFT):
 	make -C ./include/Libft -s

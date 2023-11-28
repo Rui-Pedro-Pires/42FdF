@@ -30,10 +30,10 @@ int	render_map(t_data *data)
 	data->img.addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp, \
 	&data->img.line_len, &data->img.endian);
 	data->y = 0;
-	while (data->y < data->height)
+	while (data->y < (data->height))
 	{
 		data->x = 0;
-		while (data->x < data->width)
+		while (data->x < (data->width))
 		{
 			if (data->x < data->width - 1)
 				bresenhaim(data, data->x + 1, data->y);
@@ -74,15 +74,16 @@ int	render_map_2d(t_data *data)
 
 int	init_window(t_data *data)
 {
-	data->zoom = 10;
-	while ((data->width * data->zoom) > (WIDTH / 1.5) && (data->height * data->zoom ) > (HEIGHT))
-	{
-		data->zoom /= 2;
-	}
+	data->zoom = 20;
+	// while ((data->width * data->zoom) > (WIDTH / 1.5) && (data->height * data->zoom ) > (HEIGHT))
+	// {
+	// 	data->zoom /= 2;
+	// }
 	data->prespective = 1;
-	data->hor = 1000;
-	data->hey = 400;
-	data->angle = 0.8;
+	data->hor = WIDTH / 2;
+	data->hey = HEIGHT / 2 - data->height * 4;
+	data->angle_x = 0.8;
+	data->angle_y = 0.8;
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		exit (1);

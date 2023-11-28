@@ -29,7 +29,7 @@ int	build_img(t_data *data)
 	char	*ptr;
 	
 	ptr = NULL;
-	data->color = 0xFF;
+	data->color = 0xFFFFFF;
 	colors_change(data);
 	if (data->u < (WIDTH - 1) && data->u >= 0 \
 	&& data->v < (HEIGHT - 1) && data->v >= 0)
@@ -43,12 +43,32 @@ int	build_img(t_data *data)
 
 void	colors_change(t_data *data)
 {
+	int	red;
+	int	green;
+	// int	blue;
+
+	green = 255;
+	red = 0;
 	if (data->z > 0 || data->z1 > 0)
-		data->color = 0x00FF00;
-	else if (data->z > 5 || data->z1 > 5)
-		data->color = 0xFFFFFFFF;
-	else if (data->z > 10 || data->z1 > 10)
-		data->color = 0xFF00FF;
-	else if (data->z > 15 || data->z1 > 15)
-		data->color = 0x00;
+	{
+		if (red < 255)
+		{
+			red = (0x000000 + 255/150*data->z);
+			red <<= 16;
+		}
+	}
+	if (data->z > 0 || data->z1 > 0)
+	{
+		green += (0x000000 - 255/80*data->z + 0);
+		if (green > 0)
+		{
+			green <<= 8;
+		}
+		data->color = red + green;
+	}
+	// blue = 0;
+// 	if (data->z > 10 || data->z1 > 10)
+// 		data->color = 0x54ae3f;
+// 	if (data->z > 15 || data->z1 > 15)
+// 		data->color = 0x810202;
 }

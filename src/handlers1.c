@@ -19,7 +19,7 @@ int	handle_keypress(int keysym, t_data *data)
 	else if (keysym == XK_Right || keysym == XK_Left || \
 	keysym == XK_Up || keysym == XK_Down || keysym == XK_r)
 		move_handle(keysym, data);
-	else if (keysym == XK_o || keysym == XK_p 
+	else if (keysym == XK_x || keysym == XK_y 
 	|| keysym == XK_F1 || keysym == XK_F2 || keysym == XK_F3)
 		angle_handle(keysym, data);
 	else if (keysym == XK_z || keysym == XK_x)
@@ -58,28 +58,37 @@ int	move_handle(int keysym, t_data *data)
 		data->hey += 5;
 	else if (keysym == XK_r)
 	{
-		data->hor = 1000;
-		data->hey = 400;
-		while ((data->width * data->zoom) > (WIDTH / 1.5) && (data->height * data->zoom ) > (HEIGHT))
-		{
-			data->zoom /= 2;
-		}
-		data->angle = 0.8;
+		data->hor = WIDTH / 2;
+		data->hey = HEIGHT / 2 - data->height * 4;
+		data->zoom = 20;
+		// while ((data->width * data->zoom) > (WIDTH / 1.5) && (data->height * data->zoom ) > (HEIGHT))
+		// {
+		// 	data->zoom /= 2;
+		// }
+		data->angle_x = 0.024567;
+		data->angle_y = 0.024567;
 	}
 	return (0);
 }
 
 int	angle_handle(int keysym, t_data *data)
 {
-	data->prespective = 1;
-	if (keysym == XK_o)
-		data->angle += 0.1;
-	else if (keysym == XK_p)
-		data->angle -= 0.1;
+	if (keysym == XK_x)
+		data->angle_x += 0.1;
+	else if (keysym == XK_y)
+		data->angle_y += 0.1;
 	else if (keysym == XK_F1)
-		data->angle = 0.8;
+	{
+		data->prespective = 1;
+		data->angle_x = 0;
+		data->angle_y = 0;
+	}
 	else if (keysym == XK_F2)
-		data->angle = 0;
+	{
+		data->prespective = 1;
+		data->angle_x = 0;
+		data->angle_y = 0;
+	}
 	else if	(keysym == XK_F3)
 		data->prespective = 2;
 	return (0);

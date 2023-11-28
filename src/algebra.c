@@ -62,8 +62,8 @@ void	bresenhaim_2d(t_data *data, float x1, float y1)
 
 void	isometric(float *x, float *y, float *z, t_data *data)
 {
-	*x = (*x - *y) * cos(data->angle);
-	*y = ((*x + *y) * sin(data->angle)) - *z;
+	*x = ((*x - *y)) * cos(data->angle_x);
+	*y = (((*x + *y)) * sin(data->angle_y)) - *z;
 }
 
 float	max_step(float x_step, float y_step)
