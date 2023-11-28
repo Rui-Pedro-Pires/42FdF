@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:10:56 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/28 16:02:08 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:07:48 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	render_map(t_data *data)
 		map_par_2d(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,\
 	 data->img.mlx_img, 0, 0);
+	menu_render(data);
 	return (0);
 }
 
@@ -61,4 +62,17 @@ int	init_window(t_data *data)
 		exit (2);
 	}
 	return (1);
+}
+
+int	menu_render(t_data *data)
+{
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 20, 0xFFFFFF, "Press R to reset");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 40, 0xFFFFFF, "Press + to increase high");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 60, 0xFFFFFF, "Press - to decrease high");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 80, 0xFFFFFF, "Press X to rotate in x");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 100, 0xFFFFFF, "Press Y to rotate in y");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 120, 0xFFFFFF, "Mouse left click to change the map position");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 140, 0xFFFFFF, "Scroll Up to zoom out");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 160, 0xFFFFFF, "Scroll down to zoom in");
+	return (0);
 }

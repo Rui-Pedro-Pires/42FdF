@@ -78,6 +78,7 @@ void	zoom(float *x, float *y, t_data *data);
 void	map_move(float *x, float *y, t_data *data);
 int	change_zoom(int keysym, t_data *data);
 void	colors_change(t_data *data);
+int	menu_render(t_data *data);
 
 ///////////////////////////////
 //     Handlers Functions    //
