@@ -31,8 +31,8 @@ int	build_img(t_data *data)
 	ptr = NULL;
 	data->color = 0xFFFFFF;
 	colors_change(data);
-	if (data->u < (WIDTH - 1) && data->u >= 0 \
-	&& data->v < (HEIGHT - 1) && data->v >= 0)
+	if (data->u < (WIDTH - 200) && data->u >= 0 \
+	&& data->v < (HEIGHT) && data->v >= 0)
 	{
 		ptr = data->img.addr + (int)data->u * (data->img.bpp / 8) \
 		+ ((int)data->v * data->img.line_len);

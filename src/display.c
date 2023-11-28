@@ -26,7 +26,7 @@ void	open_window(t_data *data)
 
 int	render_map(t_data *data)
 {
-	data->img.mlx_img = mlx_new_image(data->mlx_ptr, WIDTH, HEIGHT);
+	data->img.mlx_img = mlx_new_image(data->mlx_ptr, WIDTH - 200, HEIGHT);
 	data->img.addr = mlx_get_data_addr(data->img.mlx_img, &data->img.bpp, \
 	&data->img.line_len, &data->img.endian);
 	data->y = data->height / 2 * -1;
@@ -39,7 +39,7 @@ int	render_map(t_data *data)
 	else if (data->height % 2 == 0 && data->prespective == 2)
 		map_par_2d(data);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr,\
-	 data->img.mlx_img, 0, 0);
+	 data->img.mlx_img, 200, 0);
 	menu_render(data);
 	return (0);
 }
@@ -48,7 +48,7 @@ int	init_window(t_data *data)
 {
 	data->zoom = 20;
 	data->prespective = 1;
-	data->hor = WIDTH / 2;
+	data->hor = (WIDTH - 200) / 2;
 	data->hey = HEIGHT / 2;
 	data->angle_x = 0.8;
 	data->angle_y = 0.8;
@@ -66,13 +66,14 @@ int	init_window(t_data *data)
 
 int	menu_render(t_data *data)
 {
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 20, 0xFFFFFF, "Press R to reset");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 40, 0xFFFFFF, "Press + to increase high");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 60, 0xFFFFFF, "Press - to decrease high");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 80, 0xFFFFFF, "Press X to rotate in x");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 100, 0xFFFFFF, "Press Y to rotate in y");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 120, 0xFFFFFF, "Mouse left click to change the map position");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 140, 0xFFFFFF, "Scroll Up to zoom out");
-	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 160, 0xFFFFFF, "Scroll down to zoom in");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 50, 0xFFFFFF, "Press R to reset");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 90, 0xFFFFFF, "Press + to increase high");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 130, 0xFFFFFF, "Press - to decrease high");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 170, 0xFFFFFF, "Press X to rotate in x");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 210, 0xFFFFFF, "Press Y to rotate in y");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 250, 0xFFFFFF, "Mouse left click to change");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 270, 0xFFFFFF, "the map position");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 310, 0xFFFFFF, "Scroll Up to zoom out");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 20, 350, 0xFFFFFF, "Scroll down to zoom in");
 	return (0);
 }

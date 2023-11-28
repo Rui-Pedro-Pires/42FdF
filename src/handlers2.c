@@ -71,6 +71,7 @@ int	mouse_input(int	keycode, int x, int y, t_data *data)
 	if (keycode == 1)
 	{
 		mlx_mouse_get_pos(data->mlx_ptr, data->win_ptr, &data->hor, &data->hey);
+		data->hor -= 300;
 		mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 		render_map(data);
 		return (0);

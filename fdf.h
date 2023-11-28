@@ -11,8 +11,8 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 600
+# define HEIGHT 300
 
 typedef struct s_img
 {
@@ -55,8 +55,7 @@ typedef struct	s_data
 
 void	creat_map(char *file, t_data *data);
 void    ft_free_splited(char **splited);
-void	size_height(char *file, t_data *data);
-void	size_width(char *file, t_data *data);
+void	map_size(char *file, t_data *data);
 void	ft_write_map(t_data *data);
 void	fill_map(char *file, t_data *data);
 void	ft_free_map(t_data *data);
