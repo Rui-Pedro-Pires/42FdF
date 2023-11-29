@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:50:13 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/28 15:46:00 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:37:54 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ void	creat_map(char *file, t_data *data)
 	data->width = 0;
 	data->height = 0;
 	map_size(file, data);
-	data->map = malloc(sizeof(int *) * data->height);
+	data->map = malloc(sizeof(t_fdf *) * data->height);
 	if (!data->map)
 		return ;
 	while (y < data->height)
 	{
-		data->map[y] = malloc(sizeof(int) * data->width);
+		data->map[y] = malloc(sizeof(t_fdf) * data->width);
 		if (!data->map)
 			return ;
 		y++;
@@ -78,7 +78,7 @@ void	fill_map(char *file, t_data *data)
 		x = 0;
 		while (x < data->width)
 		{
-			data->map[y][x] = ft_atoi(splited[x]);
+			fill_matrix(data, x, y, splited[x]);
 			x++;
 		}
 		ft_free_splited(splited);
@@ -90,21 +90,35 @@ void	fill_map(char *file, t_data *data)
 	close(fd);
 }
 
-// void	ft_write_map(t_data *data)
-// {
-// 	int	x;
-// 	int	y;
+void	fill_matrix(t_data *data, int x, int y, char *splited)
+{
+	if (check_for_colors(splited))
+	{
+		data->map[y][x].z = ft_atoi(splited);
+		data->map[y][x].color = atoi_base(splited);
+	}
+	else
+	{
+		data->map[y][x].z = ft_atoi(splited);
+		data->map[y][x].color = 16777215;
+	}
+}
 
-// 	y = 0;
-// 	while (y < data->height)
-// 	{
-// 		x = 0;
-// 		while (x < data->width)
-// 		{
-// 			printf("%3d", data->map[y][x]);
-// 			x++;
-// 		}
-// 		printf("\n");
-// 		y++;
-// 	}
-// }
+void	ft_write_map(t_data *data)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < data->height)
+	{
+		x = 0;
+		while (x < data->width)
+		{
+			printf("%d\n", data->map[y][x].color);
+			x++;
+		}
+		printf("\n");
+		y++;
+	}
+}

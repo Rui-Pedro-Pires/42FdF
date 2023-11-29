@@ -7,6 +7,7 @@ SRC = ./src/fdf.c\
 	./src/handlers1.c\
 	./src/handlers2.c\
 	./src/maps_res.c\
+	./src/color_utils.c\
 
 OBJ = $(SRC:.c=.o)
 

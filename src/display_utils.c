@@ -6,19 +6,19 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/27 10:21:04 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/28 16:36:54 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:35:40 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void	zoom(float *x, float *y, t_data *data)
+void	zoom(double *x, double *y, t_data *data)
 {
 	*x *= data->zoom;
 	*y *= data->zoom;
 }
 
-void	map_move(float *x, float *y, t_data *data)
+void	map_move(double *x, double *y, t_data *data)
 {
 	*x += data->hor;
 	*y += data->hey;
@@ -27,10 +27,8 @@ void	map_move(float *x, float *y, t_data *data)
 int	build_img(t_data *data)
 {
 	char	*ptr;
-	
+
 	ptr = NULL;
-	data->color = 0xFFFFFF;
-	colors_change(data);
 	if (data->u < (WIDTH - 200) && data->u >= 0 \
 	&& data->v < (HEIGHT) && data->v >= 0)
 	{
@@ -73,14 +71,14 @@ int	build_img(t_data *data)
 // // 		data->color = 0x810202;
 // }
 
-void	colors_change(t_data *data)
-{
-	if (data->z >= 0 || data->z1 >= 0)
-		data->color = 0x00FFFF;
-	if (data->z >= 10 || data->z1 >= 10)
-		data->color = 0xFFFF00;
-	if (data->z >= 90 || data->z1 >= 90)
-		data->color = 0xFF0000;
-	if (data->z >= 120 || data->z1 >= 120)
-		data->color = 0xFFFFFF;
-}
+// void	colors_change(t_data *data)
+// {
+// 	if (data->z == 0 || data->z1 == 0)
+// 		data->color = 0xFFFFFF;
+// 	if (data->z >= 1 || data->z1 >= 1)
+// 		data->color = 0xFF00FF;
+// 	// if (data->z >= 90 || data->z1 >= 90)
+// 	// 	data->color = 0xFF0000;
+// 	// if (data->z >= 120 || data->z1 >= 120)
+// 	// 	data->color = 0xFFFFFF;
+// }

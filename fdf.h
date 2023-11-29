@@ -11,8 +11,8 @@
 # include <X11/keysym.h>
 # include <X11/X.h>
 
-# define WIDTH 600
-# define HEIGHT 300
+# define WIDTH 1920
+# define HEIGHT 1080
 
 typedef struct s_img
 {
@@ -22,6 +22,12 @@ typedef struct s_img
 	int	line_len;
 	int	endian;
 }	t_img;
+
+typedef struct s_fdf
+{
+	float	z;
+	int color;
+}	t_fdf;
 
 typedef struct	s_data
 {
@@ -36,18 +42,19 @@ typedef struct	s_data
 	int	hey;
 	float	angle_x;
 	float	angle_y;
-	float	zoom;
+	double	zoom;
 	int	x;
 	int	y;
-	float	u;
-	float	v;
+	double	u;
+	double	v;
 	float	z;
 	float	z1;
-	float	x_step;
-	float	y_step;
-	float	**map;
+	double	x_step;
+	double	y_step;
+	t_fdf	**map;
 	t_img		img;
 }	t_data;
+
 
 ///////////////////////////////
 //       Map Functions       //
@@ -58,7 +65,10 @@ void    ft_free_splited(char **splited);
 void	map_size(char *file, t_data *data);
 void	ft_write_map(t_data *data);
 void	fill_map(char *file, t_data *data);
+void	fill_matrix(t_data *data, int x, int y, char *splited);
 void	ft_free_map(t_data *data);
+int	atoi_base(char *str);
+int	check_for_colors(char *str);
 
 ///////////////////////////////
 //     Display Functions     //
@@ -69,15 +79,16 @@ int	render_map(t_data *data);
 void	open_window(t_data *data);
 float	positive(float n);
 float	max_step(float x_step, float y_step);
-void	bresenhaim(t_data *data, float x1, float y1);
-void	bresenhaim_2d(t_data *data, float x1, float y1);
-void	isometric(float *x, float *y, float *z, t_data *data);
+void	bresenhaim(t_data *data, double x1, double y1);
+void	bresenhaim_2d(t_data *data, double x1, double y1);
+void	isometric(double *x, double *y, float *z, t_data *data);
 int	build_img(t_data *data);
-void	zoom(float *x, float *y, t_data *data);
-void	map_move(float *x, float *y, t_data *data);
+void	zoom(double *x, double *y, t_data *data);
+void	map_move(double *x, double *y, t_data *data);
 int	change_zoom(int keysym, t_data *data);
 void	colors_change(t_data *data);
 int	menu_render(t_data *data);
+int	menu_background_render(t_data *data);
 
 ///////////////////////////////
 //     Handlers Functions    //

@@ -6,18 +6,22 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:12:18 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/28 15:42:36 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/29 16:31:53 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-void	bresenhaim(t_data *data, float x1, float y1)
+void	bresenhaim(t_data *data, double x1, double y1)
 {
 	data->u = data->x;
 	data->v = data->y;
-	data->z = data->map[data->y + (data->height / 2)][data->x + (data->width / 2)];
-	data->z1 = data->map[(int)y1 + (data->height / 2)][(int)x1 + (data->width / 2)];
+	data->z = data->map[data->y + (data->height / 2)] \
+	[data->x + (data->width / 2)].z;
+	data->z1 = data->map[(int)y1 + (data->height / 2)] \
+	[(int)x1 + (data->width / 2)].z;
+	data->color = data->map[data->y + (data->height / 2)] \
+	[data->x + (data->width / 2)].color;
 	isometric(&data->u, &data->v, &data->z, data);
 	isometric(&x1, &y1, &data->z1, data);
 	zoom(&data->u, &data->v, data);
@@ -37,12 +41,16 @@ void	bresenhaim(t_data *data, float x1, float y1)
 	}
 }
 
-void	bresenhaim_2d(t_data *data, float x1, float y1)
+void	bresenhaim_2d(t_data *data, double x1, double y1)
 {
 	data->u = data->x;
 	data->v = data->y;
-	data->z = data->map[data->y + (data->height / 2)][data->x + (data->width / 2)];
-	data->z1 = data->map[(int)y1 + (data->height / 2)][(int)x1 + (data->width / 2)];
+	data->z = data->map[data->y + (data->height / 2)] \
+	[data->x + (data->width / 2)].z;
+	data->z1 = data->map[(int)y1 + (data->height / 2)] \
+	[(int)x1 + (data->width / 2)].z;
+	data->color = data->map[data->y + (data->height / 2)] \
+	[data->x + (data->width / 2)].color;
 	zoom(&data->u, &data->v, data);
 	zoom(&x1, &y1, data);
 	map_move(&data->u, &data->v, data);
@@ -60,7 +68,7 @@ void	bresenhaim_2d(t_data *data, float x1, float y1)
 	}
 }
 
-void	isometric(float *x, float *y, float *z, t_data *data)
+void	isometric(double *x, double *y, float *z, t_data *data)
 {
 	*x = ((*x - *y)) * cos(data->angle_x);
 	*y = (((*x + *y)) * sin(data->angle_y)) - *z;
@@ -80,4 +88,3 @@ float	positive(float n)
 		return (n *= -1);
 	return (n);
 }
-
