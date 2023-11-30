@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:12:18 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/29 16:31:53 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/30 17:07:19 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,12 @@ void	bresenhaim(t_data *data, double x1, double y1)
 	[data->x + (data->width / 2)].color;
 	isometric(&data->u, &data->v, &data->z, data);
 	isometric(&x1, &y1, &data->z1, data);
+	rotate_y_axis(data, &data->u, &data->z);
+	rotate_y_axis(data, &x1, &data->z1);
+	rotate_z_axis(data, &data->u, &data->v);
+	rotate_z_axis(data, &x1, &y1);
+	rotate_x_axis(data, &data->v, &data->z);
+	rotate_x_axis(data, &y1, &data->z1);
 	zoom(&data->u, &data->v, data);
 	zoom(&x1, &y1, data);
 	map_move(&data->u, &data->v, data);
@@ -68,10 +74,28 @@ void	bresenhaim_2d(t_data *data, double x1, double y1)
 	}
 }
 
+void	rotate_y_axis(t_data *data, double *x, float *z)
+{
+	*x = *x * cos(data->angle_y) + *z * sin(data->angle_y);
+	*z = *z * cos(data->angle_y) - *x * sin(data->angle_y);
+}
+
+void	rotate_x_axis(t_data *data, double *y, float *z)
+{
+	*y = *y * cos(data->angle_x) - *z * sin(data->angle_x);
+	*z = *y * sin(data->angle_x) + *z * cos(data->angle_x);
+}
+
+void	rotate_z_axis(t_data *data, double *x, double *y)
+{
+	*x = (*x * cos(data->angle_z) - *y * sin(data->angle_z));
+	*y = (*x * sin(data->angle_z) + *y * cos(data->angle_z));
+}
+
 void	isometric(double *x, double *y, float *z, t_data *data)
 {
-	*x = ((*x - *y)) * cos(data->angle_x);
-	*y = (((*x + *y)) * sin(data->angle_y)) - *z;
+	*x = (*x * cos(data->angle) - *y * sin(data->angle));
+	*y = (*x * sin(data->angle) + *y * cos(data->angle)) - *z;
 }
 
 float	max_step(float x_step, float y_step)

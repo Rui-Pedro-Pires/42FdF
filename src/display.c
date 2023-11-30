@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:10:56 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/29 11:31:28 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/30 16:52:14 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@ int	init_window(t_data *data)
 	data->prespective = 1;
 	data->hor = (WIDTH - 200) / 2;
 	data->hey = HEIGHT / 2;
-	data->angle_x = 0.8;
-	data->angle_y = 0.8;
+	data->angle_x = 0;
+	data->angle_y = 0;
+	data->angle_z = 0;
+	data->angle = 0.8;
 	data->mlx_ptr = mlx_init();
 	if (!data->mlx_ptr)
 		exit (1);
@@ -96,7 +98,7 @@ int	menu_background_render(t_data *data)
 	int	x;
 
 	y = 0;
-	while (y < HEIGHT - 1)
+	while (y < HEIGHT)
 	{
 		x = 0;
 		while (x < 200)

@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:15:55 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/29 11:07:29 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/11/30 13:55:27 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	handle_keypress(int keysym, t_data *data)
 	else if (keysym == XK_Right || keysym == XK_Left || \
 	keysym == XK_Up || keysym == XK_Down || keysym == XK_r)
 		move_handle(keysym, data);
-	else if (keysym == XK_x || keysym == XK_y \
+	else if (keysym == XK_x || keysym == XK_y || keysym == XK_z \
 	|| keysym == XK_F1 || keysym == XK_F2 || keysym == XK_F3)
 		angle_handle(keysym, data);
 	else if (keysym == XK_KP_Add || keysym == XK_KP_Subtract)
@@ -68,11 +68,14 @@ int	angle_handle(int keysym, t_data *data)
 		data->angle_x += 0.1;
 	else if (keysym == XK_y)
 		data->angle_y += 0.1;
+	else if (keysym == XK_z)
+		data->angle_z += 0.1;
 	else if (keysym == XK_F1)
 	{
 		data->prespective = 1;
-		data->angle_x = 0.8;
-		data->angle_y = 0.8;
+		data->angle_x = 0;
+		data->angle_y = 0;
+		data->angle_z = 0;
 	}
 	else if (keysym == XK_F2)
 	{

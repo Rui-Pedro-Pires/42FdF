@@ -40,8 +40,10 @@ typedef struct	s_data
 	int	prespective;
 	int	hor;
 	int	hey;
+	float	angle;
 	float	angle_x;
 	float	angle_y;
+	float	angle_z;
 	double	zoom;
 	int	x;
 	int	y;
@@ -61,12 +63,10 @@ typedef struct	s_data
 ///////////////////////////////
 
 void	creat_map(char *file, t_data *data);
-void    ft_free_splited(char **splited);
 void	map_size(char *file, t_data *data);
 void	ft_write_map(t_data *data);
 void	fill_map(char *file, t_data *data);
 void	fill_matrix(t_data *data, int x, int y, char *splited);
-void	ft_free_map(t_data *data);
 int	atoi_base(char *str);
 int	check_for_colors(char *str);
 
@@ -74,9 +74,9 @@ int	check_for_colors(char *str);
 //     Display Functions     //
 ///////////////////////////////
 
+void	open_window(t_data *data);
 int	init_window(t_data *data);
 int	render_map(t_data *data);
-void	open_window(t_data *data);
 float	positive(float n);
 float	max_step(float x_step, float y_step);
 void	bresenhaim(t_data *data, double x1, double y1);
@@ -87,6 +87,10 @@ void	zoom(double *x, double *y, t_data *data);
 void	map_move(double *x, double *y, t_data *data);
 int	change_zoom(int keysym, t_data *data);
 void	colors_change(t_data *data);
+void	map_par(t_data *data);
+void	map_impar(t_data *data);
+void	map_par_2d(t_data *data);
+void	map_impar_2d(t_data *data);
 int	menu_render(t_data *data);
 int	menu_background_render(t_data *data);
 
@@ -100,13 +104,23 @@ int	move_handle(int keysym, t_data *data);
 int	mouse_input(int	keycode, int x, int y, t_data *data);
 int	angle_handle(int keysym, t_data *data);
 int	z_handle(int keysym, t_data *data);
+void	rotate_x_axis(t_data *data, double *y, float *z);
+void	rotate_y_axis(t_data *data, double *x, float *z);
+void	rotate_z_axis(t_data *data, double *x, double *y);
+
+///////////////////////////////
+//       Keys Functions      //
+///////////////////////////////
+
 int	decrease_z(t_data *data);
 int	increase_z(t_data *data);
 int	default_img(t_data *data);
-void	map_par(t_data *data);
-void	map_impar(t_data *data);
-void	map_par_2d(t_data *data);
-void	map_impar_2d(t_data *data);
 
+///////////////////////////////
+//       Free functions      //
+///////////////////////////////
+
+void	ft_free_map(t_data *data);
+void    ft_free_splited(char **splited);
 
 #endif
