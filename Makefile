@@ -1,13 +1,16 @@
 SRC = ./src/fdf.c\
 	./src/creat_map.c\
 	./src/free_utils.c\
-	./src/algebra.c\
-	./src/display.c\
-	./src/display_utils.c\
-	./src/handlers1.c\
-	./src/handlers2.c\
+	./src/bresenham.c\
+	./src/init_window.c\
+	./src/render.c\
+	./src/handlers.c\
+	./src/mouse_handlers.c\
+	./src/keys_handlers.c\
 	./src/maps_res.c\
 	./src/color_utils.c\
+	./src/rotation.c\
+	./src/transf_zoom.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -17,7 +20,7 @@ RM = rm -rf
 
 INCLUDE = fdf.h
 
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
 
 LIBFT = ./include/Libft/libft.a
 

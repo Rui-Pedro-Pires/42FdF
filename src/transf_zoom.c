@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   transf_zoom.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/20 16:20:08 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/05 17:03:04 by ruiolive         ###   ########.fr       */
+/*   Created: 2023/11/27 10:21:04 by ruiolive          #+#    #+#             */
+/*   Updated: 2023/12/05 12:18:49 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-int	main(int argc, char **argv)
+void	zoom(double *x, double *y, t_data *data)
 {
-	t_data	data;
+	*x *= data->zoom;
+	*y *= data->zoom;
+	data->u *= data->zoom;
+	data->v *= data->zoom;
+}
 
-	if (argc == 2)
-	{
-		creat_map(argv[1], &data);
-		open_window(&data);
-	}
-	exit (0);
+void	map_move(double *x, double *y, t_data *data)
+{
+	*x += data->hor;
+	*y += data->hey;
+	data->u += data->hor;
+	data->v += data->hey;
 }

@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 15:52:12 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/30 11:04:43 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/05 10:36:14 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	map_par(t_data *data)
 		while (data->x < (data->width / 2))
 		{
 			if (data->x < (data->width / 2) - 1)
-				bresenhaim(data, data->x + 1, data->y);
+				bresenham(data, data->x + 1, data->y);
 			if (data->y < (data->height / 2) - 1)
-				bresenhaim(data, data->x, data->y + 1);
+				bresenham(data, data->x, data->y + 1);
 			data->x++;
 		}
 		data->y++;
@@ -37,45 +37,51 @@ void	map_impar(t_data *data)
 		while (data->x <= (data->width / 2))
 		{
 			if (data->x < (data->width / 2))
-				bresenhaim(data, data->x + 1, data->y);
+				bresenham(data, data->x + 1, data->y);
 			if (data->y < (data->height / 2))
-				bresenhaim(data, data->x, data->y + 1);
+				bresenham(data, data->x, data->y + 1);
 			data->x++;
 		}
 		data->y++;
 	}
 }
 
-void	map_par_2d(t_data *data)
+void	map_misto1(t_data *data)
 {
-	while (data->y < (data->height / 2))
+	if (data->height % 2 != 0)
 	{
-		data->x = data->width / 2 * -1;
-		while (data->x < (data->width / 2))
+		while (data->y <= (data->height / 2))
 		{
-			if (data->x < (data->width / 2) - 1)
-				bresenhaim_2d(data, data->x + 1, data->y);
-			if (data->y < (data->height / 2) - 1)
-				bresenhaim_2d(data, data->x, data->y + 1);
-			data->x++;
+			data->x = data->width / 2 * -1;
+			while (data->x < (data->width / 2))
+			{
+				if (data->x < (data->width / 2) - 1)
+					bresenham(data, data->x + 1, data->y);
+				if (data->y < (data->height / 2))
+					bresenham(data, data->x, data->y + 1);
+				data->x++;
+			}
+			data->y++;
 		}
-		data->y++;
 	}
 }
 
-void	map_impar_2d(t_data *data)
+void	map_misto2(t_data *data)
 {
-	while (data->y <= (data->height / 2))
+	if (data->width % 2 != 0)
 	{
-		data->x = data->width / 2 * -1;
-		while (data->x <= (data->width / 2))
+		while (data->y < (data->height / 2))
 		{
-			if (data->x < (data->width / 2))
-				bresenhaim_2d(data, data->x + 1, data->y);
-			if (data->y < (data->height / 2))
-				bresenhaim_2d(data, data->x, data->y + 1);
-			data->x++;
+			data->x = data->width / 2 * -1;
+			while (data->x <= (data->width / 2))
+			{
+				if (data->x < (data->width / 2))
+					bresenham(data, data->x + 1, data->y);
+				if (data->y < (data->height / 2) - 1)
+					bresenham(data, data->x, data->y + 1);
+				data->x++;
+			}
+			data->y++;
 		}
-		data->y++;
 	}
 }

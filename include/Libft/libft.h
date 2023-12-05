@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:33:52 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/28 15:25:51 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:44:50 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 11
+#  define BUFFER_SIZE 4000
 # endif
 
 # include <stdio.h>

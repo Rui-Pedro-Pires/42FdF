@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handlers1.c                                        :+:      :+:    :+:   */
+/*   handlers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:15:55 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/11/30 13:55:27 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/05 16:16:36 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,16 @@ int	handle_keypress(int keysym, t_data *data)
 	else if (keysym == XK_Right || keysym == XK_Left || \
 	keysym == XK_Up || keysym == XK_Down || keysym == XK_r)
 		move_handle(keysym, data);
-	else if (keysym == XK_x || keysym == XK_y || keysym == XK_z \
-	|| keysym == XK_F1 || keysym == XK_F2 || keysym == XK_F3)
+	else if (keysym == XK_q || keysym == XK_w || keysym == XK_a \
+	|| keysym == XK_s || keysym == XK_z || keysym == XK_x)
 		angle_handle(keysym, data);
+	else if (keysym == XK_1 || keysym == XK_2 || keysym == XK_3 \
+	|| keysym == XK_4)
+		projection_handle(keysym, data);
 	else if (keysym == XK_KP_Add || keysym == XK_KP_Subtract)
 		z_handle(keysym, data);
+	else if (keysym == XK_b || keysym == XK_p)
+		color_handler(keysym, data);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	render_map(data);
 	return (0);
@@ -41,58 +46,46 @@ int	handle_close(t_data *data)
 	return (0);
 }
 
-int	move_handle(int keysym, t_data *data)
+int	increase_z(t_data *data)
 {
-	if (keysym == XK_Right)
-		data->hor += 5;
-	else if (keysym == XK_Left)
-		data->hor -= 5;
-	else if (keysym == XK_Up)
-		data->hey -= 5;
-	else if (keysym == XK_Down)
-		data->hey += 5;
-	else if (keysym == XK_r)
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < data->height)
 	{
-		data->zoom = 20;
-		data->hor = (WIDTH - 200) / 2;
-		data->hey = HEIGHT / 2;
-		data->angle_x = 0.8;
-		data->angle_y = 0.8;
+		x = 0;
+		while (x < data->width)
+		{
+			if (data->map[y][x].z > 0.8 && data->map[y][x].z < 200)
+				data->map[y][x].z *= 1.2;
+			else if (data->map[y][x].z < -0.8 && data->map[y][x].z > -200)
+				data->map[y][x].z /= 1.2;
+			x++;
+		}
+		y++;
 	}
 	return (0);
 }
 
-int	angle_handle(int keysym, t_data *data)
+int	decrease_z(t_data *data)
 {
-	if (keysym == XK_x)
-		data->angle_x += 0.1;
-	else if (keysym == XK_y)
-		data->angle_y += 0.1;
-	else if (keysym == XK_z)
-		data->angle_z += 0.1;
-	else if (keysym == XK_F1)
-	{
-		data->prespective = 1;
-		data->angle_x = 0;
-		data->angle_y = 0;
-		data->angle_z = 0;
-	}
-	else if (keysym == XK_F2)
-	{
-		data->prespective = 1;
-		data->angle_x = 0;
-		data->angle_y = 0;
-	}
-	else if (keysym == XK_F3)
-		data->prespective = 2;
-	return (0);
-}
+	int	x;
+	int	y;
 
-int	z_handle(int keysym, t_data *data)
-{
-	if (keysym == XK_KP_Add)
-		increase_z(data);
-	else if (keysym == XK_KP_Subtract)
-		decrease_z(data);
+	y = 0;
+	while (y < data->height)
+	{
+		x = 0;
+		while (x < data->width)
+		{
+			if (data->map[y][x].z > 2.5)
+				data->map[y][x].z /= 1.2;
+			else if (data->map[y][x].z < -2.5)
+				data->map[y][x].z *= 1.2;
+			x++;
+		}
+		y++;
+	}
 	return (0);
 }

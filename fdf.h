@@ -36,17 +36,20 @@ typedef struct	s_data
 	int	width;
 	int	height;
 	int	max;
-	int	color;
-	int	prespective;
+	int	color_default;
+	int	menu_color;
+	int	color_save;
 	int	hor;
 	int	hey;
-	float	angle;
+	int	button;
 	float	angle_x;
 	float	angle_y;
 	float	angle_z;
 	double	zoom;
 	int	x;
 	int	y;
+	int	prev_x;
+	int	prev_y;
 	double	u;
 	double	v;
 	float	z;
@@ -67,32 +70,36 @@ void	map_size(char *file, t_data *data);
 void	ft_write_map(t_data *data);
 void	fill_map(char *file, t_data *data);
 void	fill_matrix(t_data *data, int x, int y, char *splited);
-int	atoi_base(char *str);
-int	check_for_colors(char *str);
 
 ///////////////////////////////
-//     Display Functions     //
+//       Init Functions      //
 ///////////////////////////////
 
 void	open_window(t_data *data);
 int	init_window(t_data *data);
+
+///////////////////////////////
+//      Render Functions     //
+///////////////////////////////
+
 int	render_map(t_data *data);
-float	positive(float n);
-float	max_step(float x_step, float y_step);
-void	bresenhaim(t_data *data, double x1, double y1);
-void	bresenhaim_2d(t_data *data, double x1, double y1);
-void	isometric(double *x, double *y, float *z, t_data *data);
-int	build_img(t_data *data);
-void	zoom(double *x, double *y, t_data *data);
-void	map_move(double *x, double *y, t_data *data);
-int	change_zoom(int keysym, t_data *data);
-void	colors_change(t_data *data);
+int	menu_render(t_data *data);
+void	render_strings1(t_data *data);
+void	render_strings2(t_data *data);
+int	menu_background_render(t_data *data);
 void	map_par(t_data *data);
 void	map_impar(t_data *data);
-void	map_par_2d(t_data *data);
-void	map_impar_2d(t_data *data);
-int	menu_render(t_data *data);
-int	menu_background_render(t_data *data);
+void	map_misto1(t_data *data);
+void	map_misto2(t_data *data);
+
+///////////////////////////////
+//    Bresenham Functions    //
+///////////////////////////////
+
+float	positive(float n);
+float	max_step(float x_step, float y_step);
+void	bresenham(t_data *data, double x1, double y1);
+int	build_img(t_data *data);
 
 ///////////////////////////////
 //     Handlers Functions    //
@@ -100,13 +107,34 @@ int	menu_background_render(t_data *data);
 
 int	handle_keypress(int keysym, t_data *data);
 int	handle_close(t_data *data);
+int	handle_mouse_move(int x, int y, t_data *data);
+int	handle_mouse_down(int button, int x, int y, t_data *data);
+int	handle_mouse_up(int button, int x, int y, t_data *data);
 int	move_handle(int keysym, t_data *data);
-int	mouse_input(int	keycode, int x, int y, t_data *data);
 int	angle_handle(int keysym, t_data *data);
+int	projection_handle(int keysym, t_data *data);
 int	z_handle(int keysym, t_data *data);
+
+///////////////////////////////
+//      Colors Functions     //
+///////////////////////////////
+
+void	colors_change(t_data *data);
+int	atoi_base(char *str);
+int	check_for_colors(char *str);
+int	get_pos(char c);
+int	color_handler(int keysym, t_data *data);
+
+////////////////////////////////////////////////////
+//     Rotation / Translation / zoom Functions    //
+////////////////////////////////////////////////////
+
+void	rotation(t_data *data, double *x1, double *y1);
 void	rotate_x_axis(t_data *data, double *y, float *z);
 void	rotate_y_axis(t_data *data, double *x, float *z);
 void	rotate_z_axis(t_data *data, double *x, double *y);
+void	zoom(double *x, double *y, t_data *data);
+void	map_move(double *x, double *y, t_data *data);
 
 ///////////////////////////////
 //       Keys Functions      //
@@ -114,7 +142,6 @@ void	rotate_z_axis(t_data *data, double *x, double *y);
 
 int	decrease_z(t_data *data);
 int	increase_z(t_data *data);
-int	default_img(t_data *data);
 
 ///////////////////////////////
 //       Free functions      //
