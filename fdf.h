@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:34:56 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/06 11:47:20 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:03:42 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_data
 	int		color_default;
 	int		menu_color;
 	int		color_save;
+	int		add_color;
 	int		hor;
 	int		hey;
 	int		button;

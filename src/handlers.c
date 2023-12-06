@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:15:55 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/06 10:24:37 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:16:53 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	handle_keypress(int keysym, t_data *data)
 		projection_handle(keysym, data);
 	else if (keysym == XK_KP_Add || keysym == XK_KP_Subtract)
 		z_handle(keysym, data);
-	else if (keysym == XK_F1 || keysym == XK_F2 || keysym == XK_F3)
+	else if (keysym == XK_F1 || keysym == XK_F2 || keysym == XK_F3 \
+	|| keysym == XK_p)
 		color_handler(keysym, data);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	render_map(data);
@@ -57,10 +58,12 @@ int	increase_z(t_data *data)
 		x = 0;
 		while (x < data->width)
 		{
-			if (data->map[y][x].z > 0.8 && data->map[y][x].z < 200)
-				data->map[y][x].z *= 1.2;
-			else if (data->map[y][x].z < -0.8 && data->map[y][x].z > -200)
-				data->map[y][x].z /= 1.2;
+			if (data->map[y][x].z > 0.5 \
+			&& data->map[y][x].z < (data->max_z + 40))
+				data->map[y][x].z += 1.2;
+			if (data->map[y][x].z < -0.5 \
+			&& data->map[y][x].z > (data->min_z - 40))
+				data->map[y][x].z -= 1.2;
 			x++;
 		}
 		y++;
@@ -79,10 +82,10 @@ int	decrease_z(t_data *data)
 		x = 0;
 		while (x < data->width)
 		{
-			if (data->map[y][x].z > 2.5)
-				data->map[y][x].z /= 1.2;
-			else if (data->map[y][x].z < -2.5)
-				data->map[y][x].z *= 1.2;
+			if (data->map[y][x].z > 2)
+				data->map[y][x].z -= 1.2;
+			if (data->map[y][x].z < -2)
+				data->map[y][x].z += 1.2;
 			x++;
 		}
 		y++;

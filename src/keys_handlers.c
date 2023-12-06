@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:27:10 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/06 13:36:18 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/06 14:11:48 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,7 @@ int	color_handler(int keysym, t_data *data)
 		data->color_save = 2;
 	else if (keysym == XK_F3)
 		data->color_save = 3;
+	else if (keysym == XK_p)
+		data->add_color += 1;
 	return (0);
 }
