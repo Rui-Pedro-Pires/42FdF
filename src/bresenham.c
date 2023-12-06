@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:12:18 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/05 16:32:33 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:40:16 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ void	bresenham(t_data *data, double x1, double y1)
 	[(int)x1 + (data->width / 2)].z;
 	data->color_default = data->map[data->y + (data->height / 2)] \
 	[data->x + (data->width / 2)].color;
-	if (data->color_save != 1)
-		colors_change(data); 
+	colors_change(data);
 	rotation(data, &x1, &y1);
 	zoom(&x1, &y1, data);
 	map_move(&x1, &y1, data);

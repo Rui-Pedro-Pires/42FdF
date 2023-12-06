@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:50:13 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/05 17:03:54 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/06 11:26:49 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,9 @@ void	map_size(char *file, t_data *data)
 
 	x = 0;
 	fd = open(file, O_RDONLY);
-	if (fd == -1)
-	{
-		perror("Error");
-		exit (0);
-	}
+	ft_open_error(fd);
 	line = get_next_line(fd);
+	ft_read_error(line);
 	line1 = ft_split(line, ' ');
 	while (line1[x++])
 		data->width++;
@@ -122,4 +119,3 @@ void	ft_write_map(t_data *data)
 		y++;
 	}
 }
-

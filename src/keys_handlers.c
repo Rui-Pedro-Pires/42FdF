@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:27:10 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/05 12:22:17 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/06 13:36:18 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,11 @@ int	projection_handle(int keysym, t_data *data)
 
 int	color_handler(int keysym, t_data *data)
 {
-	if (keysym == XK_b)
-	{
-		if (data->menu_color > 0)
-			data->menu_color -= 5;
-	}
-	else if (keysym == XK_m)
-		data->menu_color = (data->menu_color >> 8);
-	else if (keysym == XK_p)
+	if (keysym == XK_F1)
+		data->color_save = 1;
+	else if (keysym == XK_F2)
 		data->color_save = 2;
+	else if (keysym == XK_F3)
+		data->color_save = 3;
 	return (0);
 }

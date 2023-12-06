@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 09:57:29 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/05 12:40:02 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:43:45 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ int	init_window(t_data *data)
 	data->angle_y = -0.012300;
 	data->angle_z = 0.743534;
 	data->menu_color = 0x444444;
-	data->color_save = 1;
+	data->color_save = 0;
 	data->mlx_ptr = mlx_init();
+	get_max_z(data);
+	get_min_z(data);
 	if (!data->mlx_ptr)
 		exit (1);
 	data->win_ptr = mlx_new_window(data->mlx_ptr, WIDTH, HEIGHT, "FdF");

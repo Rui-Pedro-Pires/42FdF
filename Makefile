@@ -9,8 +9,11 @@ SRC = ./src/fdf.c\
 	./src/keys_handlers.c\
 	./src/maps_res.c\
 	./src/color_utils.c\
+	./src/get_colors.c\
+	./src/diff_colors.c\
 	./src/rotation.c\
 	./src/transf_zoom.c\
+	./src/errors.c\
 
 OBJ = $(SRC:.c=.o)
 
@@ -20,7 +23,7 @@ RM = rm -rf
 
 INCLUDE = fdf.h
 
-CFLAGS = -Wall -Werror -Wextra #-fsanitize=address
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 
 LIBFT = ./include/Libft/libft.a
 

@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:15:55 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/05 16:16:36 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/06 10:24:37 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	handle_keypress(int keysym, t_data *data)
 		projection_handle(keysym, data);
 	else if (keysym == XK_KP_Add || keysym == XK_KP_Subtract)
 		z_handle(keysym, data);
-	else if (keysym == XK_b || keysym == XK_p)
+	else if (keysym == XK_F1 || keysym == XK_F2 || keysym == XK_F3)
 		color_handler(keysym, data);
 	mlx_destroy_image(data->mlx_ptr, data->img.mlx_img);
 	render_map(data);
