@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:05:50 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/07 09:54:10 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:39:47 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,13 +94,17 @@ void	render_strings2(t_data *data)
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
 	520, 0xFFFFFF, "Scroll up to zoom in");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
-	560, 0xFFFFFF, "Press P to change color");
+	560, 0xFFFFFF, "Press F2/F3 to change color");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
-	600, 0xFFFFFF, "Press 0/1/2/3 to");
+	600, 0xFFFFFF, "Press F1 to change color");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
-	620, 0xFFFFFF, "change perspective");
+	620, 0xFFFFFF, "to default");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
-	660, 0xFFFFFF, "Press F1/F2/F3 to");
+	660, 0xFFFFFF, "Press 1/2/3/4 to");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
-	680, 0xFFFFFF, "change color dynamically");
+	680, 0xFFFFFF, "change perspective");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
+	720, 0xFFFFFF, "Press P to");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
+	740, 0xFFFFFF, "change color dynamically");
 }

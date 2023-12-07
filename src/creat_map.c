@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 14:50:13 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/06 11:26:49 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/07 10:53:26 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,20 @@ void	fill_map(char *file, t_data *data)
 
 void	fill_matrix(t_data *data, int x, int y, char *splited)
 {
-	if (check_for_colors(splited))
-	{
-		data->map[y][x].z = ft_atoi(splited);
-		data->map[y][x].color = atoi_base(splited);
-	}
+	if (!splited)
+		data->map[y][x].z = 0;
 	else
 	{
-		data->map[y][x].z = ft_atoi(splited);
-		data->map[y][x].color = 16777215;
+		if (check_for_colors(splited))
+		{
+			data->map[y][x].z = ft_atoi(splited);
+			data->map[y][x].color = atoi_base(splited);
+		}
+		else
+		{
+			data->map[y][x].z = ft_atoi(splited);
+			data->map[y][x].color = 16777215;
+		}
 	}
 }
 
