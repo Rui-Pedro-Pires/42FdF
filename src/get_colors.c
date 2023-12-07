@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 10:22:42 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/06 14:04:38 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:38:25 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,14 @@ void	colors_change(t_data *data)
 {
 	if (data->color_save == 2)
 	{
-		if (data->z1 >= 0)
+		if (data->z1 >= 0 || data->z >= 0)
 			colors1(data);
 		else
 			colors2(data);
 	}
 	else if (data->color_save == 3)
 	{
-		if (data->z1 >= 0)
+		if (data->z1 >= 0 || data->z >= 0)
 			colors3(data);
 		else
 			colors4(data);

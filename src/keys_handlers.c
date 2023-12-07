@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:27:10 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/06 14:11:48 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:55:13 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int	move_handle(int keysym, t_data *data)
 {
-	if (keysym == XK_Right)
+	if (keysym == XK_Right && data->hor < 2000)
 		data->hor += 5;
-	else if (keysym == XK_Left)
+	else if (keysym == XK_Left && data->hor > -2000)
 		data->hor -= 5;
-	else if (keysym == XK_Up)
+	else if (keysym == XK_Up && data->hey > -1000)
 		data->hey -= 5;
-	else if (keysym == XK_Down)
+	else if (keysym == XK_Down && data->hey < 1500)
 		data->hey += 5;
 	else if (keysym == XK_r)
 	{

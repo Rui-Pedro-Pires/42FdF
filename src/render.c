@@ -6,7 +6,7 @@
 /*   By: ruiolive <ruiolive@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 11:05:50 by ruiolive          #+#    #+#             */
-/*   Updated: 2023/12/05 15:38:58 by ruiolive         ###   ########.fr       */
+/*   Updated: 2023/12/07 09:54:10 by ruiolive         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,6 @@ void	render_strings1(t_data *data)
 	220, 0xFFFFFF, "Press Q/W to rotate X axis");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
 	260, 0xFFFFFF, "Press A/S to rotate Y axis");
-}
-
-void	render_strings2(t_data *data)
-{
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
 	300, 0xFFFFFF, "Press Z/X to rotate Z axis");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
@@ -88,11 +84,23 @@ void	render_strings2(t_data *data)
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
 	420, 0xFFFFFF, "Mouse R click to move");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
-	460, 0xFFFFFF, "the map position");
+	440, 0xFFFFFF, "the map position");
+}
+
+void	render_strings2(t_data *data)
+{
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
-	500, 0xFFFFFF, "Scroll down to zoom out");
+	480, 0xFFFFFF, "Scroll down to zoom out");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
-	540, 0xFFFFFF, "Scroll up to zoom in");
+	520, 0xFFFFFF, "Scroll up to zoom in");
 	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
-	580, 0xFFFFFF, "Press space to change color");
+	560, 0xFFFFFF, "Press P to change color");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
+	600, 0xFFFFFF, "Press 0/1/2/3 to");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
+	620, 0xFFFFFF, "change perspective");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
+	660, 0xFFFFFF, "Press F1/F2/F3 to");
+	mlx_string_put(data->mlx_ptr, data->win_ptr, 25, \
+	680, 0xFFFFFF, "change color dynamically");
 }
