@@ -18,5 +18,5 @@ $ make
 
 To launch the program with a valid map as parameter
 ```bash
-$ ./fdf ./maps/testmaps/42.fdf
+$ ./fdf ./maps/test_maps/42.fdf
 ```
