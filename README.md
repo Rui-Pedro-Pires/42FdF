@@ -5,7 +5,7 @@
 </p>
 
 
-To pull files ↙️
+To download the files ↙️
 ```bash
 git clone git@github.com:RuiPires999/fdf.git
 ```
